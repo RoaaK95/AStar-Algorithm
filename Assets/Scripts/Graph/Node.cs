@@ -1,18 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Node
 {
-    // Start is called before the first frame update
-    void Start()
+    public List<Edge> edgeList = new List<Edge>();
+    private GameObject _id;
+    public float _xPos;
+    public float _yPos;
+    public float _zPos;
+    public Node path = null;
+    public Node camefrom;
+    public float f, g, h;
+
+    public Node(GameObject i)
     {
-        
+        _id = i;
+        _xPos = i.transform.position.x;
+        _yPos = i.transform.position.y;
+        _zPos = i.transform.position.z;
+        path = null;
     }
 
-    // Update is called once per frame
-    void Update()
+    public GameObject GetId()
     {
-        
+        return _id;
     }
+
 }
