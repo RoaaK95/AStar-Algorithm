@@ -81,4 +81,24 @@ public class Graph
     {
         return (Vector3.SqrMagnitude(a.GetId().transform.position - b.GetId().transform.position));
     }
+
+    int LowestF(List<Node> l)
+    {
+        float lowestF = 0.0f;
+        int count = 0;
+        int iteratorCount = 0;
+
+        lowestF = l[0].f;
+
+        for (int i = 0; i < l.Count; i++)
+        {
+            if (l[i].f < lowestF)
+            {
+                lowestF = l[i].f;
+                iteratorCount = count;
+            }
+            count++;
+        }
+        return iteratorCount;
+    }
 }
