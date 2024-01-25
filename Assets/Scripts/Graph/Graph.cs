@@ -66,11 +66,19 @@ public class Graph
         float tentative_g_score = 0.0f;
         bool tentative_is_better;
         start.g = 0.0f;
-        //start.h=Distance(start,end)
-        //start.f = start.h;
+        start.h = Distance(start, end);
+        start.f = start.h;
 
         open.Add(start);
 
+
+
+
         return true;//to avoid errors
+    }
+
+    float Distance(Node a, Node b)
+    {
+        return (Vector3.SqrMagnitude(a.GetId().transform.position - b.GetId().transform.position));
     }
 }
