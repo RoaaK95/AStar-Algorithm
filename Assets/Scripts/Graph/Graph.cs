@@ -77,7 +77,7 @@ public class Graph
             Node thisNode = open[i];
             if (thisNode.GetId() == endId)
             {
-                //ReconstructPath(start, end);
+                ReconstructPath(start, end);
                 return true;
             }
 
@@ -117,12 +117,22 @@ public class Graph
             }
 
         }
-
-
-
         return false;
     }
 
+    public void ReconstructPath(Node startId, Node endId)
+    {
+        pathList.Clear();
+        pathList.Add(endId);
+
+        Node p = endId.camefrom;
+        while (p != null && p != startId)
+        {
+            pathList.Insert(0, p);
+            p = p.camefrom;
+        }
+        pathList.Insert(0, startId);
+    }
     float Distance(Node a, Node b)
     {
         return (Vector3.SqrMagnitude(a.GetId().transform.position - b.GetId().transform.position));
