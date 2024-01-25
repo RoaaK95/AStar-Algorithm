@@ -44,4 +44,33 @@ public class Graph
         }
         return null;
     }
+
+    public bool AStar(GameObject startId, GameObject endId)
+    {
+        if (startId == endId)
+        {
+            pathList.Clear();
+            return false;
+        }
+
+        Node start = FindNode(startId);
+        Node end = FindNode(endId);
+
+        if (start == null || end == null)
+        {
+            return false;
+        }
+
+        List<Node> open = new List<Node>();
+        List<Node> closed = new List<Node>();
+        float tentative_g_score = 0.0f;
+        bool tentative_is_better;
+        start.g = 0.0f;
+        //start.h=Distance(start,end)
+        //start.f = start.h;
+
+        open.Add(start);
+
+        return true;//to avoid errors
+    }
 }
