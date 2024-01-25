@@ -71,10 +71,56 @@ public class Graph
 
         open.Add(start);
 
+        while (open.Count > 0)
+        {
+            int i = LowestF(open);
+            Node thisNode = open[i];
+            if (thisNode.GetId() == endId)
+            {
+                //ReconstructPath(start, end);
+                return true;
+            }
+
+            open.RemoveAt(i);
+            closed.Add(thisNode);
+            Node neighbour;
+
+            foreach (Edge e in thisNode.edgeList)
+            {
+                neighbour = e._endNode;
+
+                if (closed.IndexOf(neighbour) > -1)
+                    continue;
+
+                tentative_g_score = thisNode.g + Distance(thisNode, neighbour);
+                if (open.IndexOf(neighbour) == -1)
+                {
+                    open.Add(neighbour);
+                    tentative_is_better = true;
+                }
+                else if (tentative_g_score < neighbour.g)
+                {
+                    tentative_is_better = true;
+                }
+                else
+                {
+                    tentative_is_better = false;
+                }
+
+                if (tentative_is_better)
+                {
+                    neighbour.camefrom = thisNode;
+                    neighbour.g = tentative_g_score;
+                    neighbour.h = Distance(neighbour, end);
+                    neighbour.f = neighbour.g + neighbour.h;
+                }
+            }
+
+        }
 
 
 
-        return true;//to avoid errors
+        return false;
     }
 
     float Distance(Node a, Node b)
