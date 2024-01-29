@@ -17,7 +17,7 @@ public class FollowWP : MonoBehaviour
     public GameObject wpManager;
     void Start()
     {
-        Time.timeScale = 5.0f;
+        Time.timeScale = 2.0f;
         wps = wpManager.GetComponent<WPManager>()._waypoints;
         g = wpManager.GetComponent<WPManager>()._graph;
         currentNode = wps[0];
@@ -42,7 +42,7 @@ public class FollowWP : MonoBehaviour
         currentWP = 0;
     }
 
-    public void GoToDomes()
+    public void GoToDome()
     {
         g.AStar(currentNode, wps[3]);
         currentWP = 0;
