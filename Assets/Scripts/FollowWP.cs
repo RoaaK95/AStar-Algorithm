@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class FollowWP : MonoBehaviour
@@ -21,7 +22,35 @@ public class FollowWP : MonoBehaviour
         currentNode = wps[0];
 
     }
+    
+    public void GoToTower()
+    {
+        g.AStar(currentNode, wps[0]);
+        currentWP = 0;
+    }
 
+    public void GoToRocket()
+    {
+        g.AStar(currentNode, wps[1]);
+        currentWP = 0;
+    }
+
+    public void GoToSolarPanels()
+    {
+        g.AStar(currentNode, wps[2]);
+        currentWP = 0;
+    }
+
+    public void GoToDomes()
+    {
+        g.AStar(currentNode, wps[3]);
+        currentWP = 0;
+    }
+    public void GoToBuilding()
+    {
+        g.AStar(currentNode, wps[4]);
+        currentWP = 0;
+    }
     void Update()
     {
 
